@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     int lives = 2;
+    int score = 0;
     private void Awake()
     {
         instance = this;
@@ -47,5 +48,11 @@ public class GameManager : MonoBehaviour
             lives--;
             print("lives : "+lives);
         }
+    }
+
+    public void UpdateScore()
+    {
+        score++;
+        print("Score : " +score);
     }
 }
