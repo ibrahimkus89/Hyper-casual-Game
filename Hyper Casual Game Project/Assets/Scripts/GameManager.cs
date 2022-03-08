@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public bool gameStarted =false;
 
     public GameObject player;
+
+    int lives = 2;
     private void Awake()
     {
         instance = this;
@@ -32,5 +34,18 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
 
+    }
+
+    public void UpdateLives()
+    {
+        if (lives <=0)
+        {
+            GameOver();
+        }
+        else
+        {
+            lives--;
+            print("lives : "+lives);
+        }
     }
 }

@@ -30,7 +30,9 @@ public class PlayerController : MonoBehaviour
 
             //SceneManager.LoadScene("Game");
 
-            GameManager.instance.GameOver();
+            //GameManager.instance.GameOver();
+
+            GameManager.instance.UpdateLives();
         }
     }
 }
