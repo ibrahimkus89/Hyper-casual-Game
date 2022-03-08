@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject backgroundParticle;
 
 
-
+    Vector3 originalCamPos;
 
     public static GameManager instance;
     public bool gameStarted =false;
@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
        
+    }
+    private void Start()
+    {
+        originalCamPos = Camera.main.transform.position;
     }
 
 
@@ -79,5 +83,21 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    public void Shake()
+    {
+        StartCoroutine(CameraShake());
+    }
+
+    IEnumerator CameraShake()
+    {
+        for (int i = 0; i <5; i++)
+        {
+            Vector2 randomPos = Random.insideUnitCircle * 0.5f;
+            Camera.main.transform.position = new Vector3(randomPos.x,randomPos.y,originalCamPos.z);
+            yield return null;
+        }
+
+        Camera.main.transform.position = originalCamPos;
     }
 }
