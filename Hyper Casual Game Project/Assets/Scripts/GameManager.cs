@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
+    public GameObject menuUI;
+    public GameObject gamePlayUI;
+    public GameObject spawner;
+
+
+
     public static GameManager instance;
     public bool gameStarted =false;
 
@@ -19,16 +25,21 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        gameStarted = true;
+       
     }
-   
 
-   public void StartGame()
+
+    public void StartGame()
     {
+        gameStarted = true;
+
+        menuUI.SetActive(false);
+        gamePlayUI.SetActive(true);
+        spawner.SetActive(true);
+
+
 
     }
-
-
     public void GameOver()
     {
         player.SetActive(false);
@@ -60,5 +71,10 @@ public class GameManager : MonoBehaviour
         score++;
         scoreText.text = "Score : " + score;
         print("Score : " +score);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
