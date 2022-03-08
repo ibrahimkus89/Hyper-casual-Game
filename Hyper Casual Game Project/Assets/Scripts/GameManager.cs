@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
 
     int lives = 2;
     int score = 0;
+
+    public Text scoreText;
+    public Text livesText;
+
     private void Awake()
     {
         instance = this;
@@ -46,6 +50,7 @@ public class GameManager : MonoBehaviour
         else
         {
             lives--;
+            livesText.text = "Lives :" + lives;
             print("lives : "+lives);
         }
     }
@@ -53,6 +58,7 @@ public class GameManager : MonoBehaviour
     public void UpdateScore()
     {
         score++;
+        scoreText.text = "Score : " + score;
         print("Score : " +score);
     }
 }
