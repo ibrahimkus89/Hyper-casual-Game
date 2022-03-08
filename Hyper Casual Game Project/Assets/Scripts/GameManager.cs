@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public GameObject menuUI;
     public GameObject gamePlayUI;
     public GameObject spawner;
+    public GameObject backgroundParticle;
+
 
 
 
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
         menuUI.SetActive(false);
         gamePlayUI.SetActive(true);
         spawner.SetActive(true);
+        backgroundParticle.SetActive(true);
 
 
 

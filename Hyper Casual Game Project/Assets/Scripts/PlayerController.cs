@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject particle;
+
     float playerYpos;
     void Start()
     {
@@ -14,12 +16,28 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.instance.gameStarted)
         {
-            playerYpos = -playerYpos;
+            if (!particle.activeInHierarchy)
+            {
+                particle.SetActive(true);
 
-            transform.position = new Vector3(transform.position.x,playerYpos,transform.position.z);
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                PositionSwitch();
+            }
         }
+
+        
+    }
+
+    void PositionSwitch()
+    {
+        playerYpos = -playerYpos;
+
+        transform.position = new Vector3(transform.position.x, playerYpos, transform.position.z);
     }
 
 
